@@ -2,13 +2,13 @@
 
 import './App.css';
 // import { AddFeeDetails } from './components/AddFeeStructure/AddFeeDetails';
-import { DetailsCard } from './components/DetailsCard/DetailsCard';
+// import { DetailsCard } from './components/DetailsCard/DetailsCard';
 
 import { CreateFeeStructure } from './components/AddFeeStructure/CreateFeeStructure';
 function App() {
   return (
     <div className="App">
-    <DetailsCard />
+    <CreateFeeStructure />
      
     </div>
   );

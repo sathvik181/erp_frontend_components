@@ -380,6 +380,37 @@ padding-top: 1px;
 
 }
 
+.sec-tag{
+  display: flex;
+  justify-content: center;
+  background: #F2F5F8;
+  
+  border-radius: 999px;
+  /* margin-right: 5px; */
+  width: 134px;
+  height: 20px;
+/* padding: 2px 8px 2px 8px; */
+gap: 2px;
+
+border: 1px 1px 1px 1px;
+opacity: 0px;
+/* border-radius: var(--radius-full); */
+
+font-size: 12px;
+font-weight: 500;
+line-height: 16px;
+
+background-color: #F2F5F8;
+color: #717784;
+padding-top: 1px;
+padding: 2px 8px 2px 8px;
+gap: 2px;
+/* border-radius: var(--radius-full); */
+border: 1px 1px 0px 1px;
+opacity: 0px;
+
+
+}
 
 .dropdown-menu {
   /* background-color: green; */
@@ -484,7 +515,9 @@ color: rgba(255, 255, 255, 1);
 
 .dropdownrightelements{
   display: flex;
-  justify-content: space-between; 
+  justify-content: space-between;
+  /* justify-content: flex-end;  *
+  /
 }
 .dropdownrightelements label{
 /* margin-left: 210px; */
@@ -641,8 +674,10 @@ margin-bottom: 40px;
 
 .subclass-item {
   display: flex;
+  flex-direction: row;
   align-items: center;
   margin-bottom: 5px;
+  justify-content: space-between;
 }
 
 .subclass-item label {
@@ -653,6 +688,7 @@ margin-bottom: 40px;
   margin-left: 10px;
   padding: 4px;
 }
+
 .checkbox.checked:after {
   content: "";
   display: block;

@@ -99,19 +99,14 @@ export const AddFeeDetails = () => {
             <div className="checkbox-minus" onClick={() => {handleClickCheckbox(index,className)}}>
             
             </div>
-          )}
-                   
-                   
-                    
-                    
+          )}       
                   <div className='dropdownrightelements'>
-                 
-                    {/* <span className="dropdown-item-text">{className}</span> */}
                     <label htmlFor={className} style={{fontWeight:400,width:'212px'}}>{className} </label>
 
-
-                    <div className="righticon">
-        < SlArrowRight  size={9} strokeWidth={70}/>
+                    <div className="righticon1" style={{marginLeft:'170px'}}>
+{checkedItems[index] && <span className="dropdown-icon"><SlArrowDown size={10} strokeWidth={78} /></span>}
+                        
+{!checkedItems[index] &&     < SlArrowRight  size={9} strokeWidth={70}/>}
             </div> 
                   </div>
                   
@@ -122,18 +117,14 @@ export const AddFeeDetails = () => {
                   {checkedItems[index]  &&  (
         <div className="subclass-dropdown">
           {Object.keys(subclasses.VI).map((subclass) => (
-            <div key={subclass} className="subclass-item">
-              <input
-                type="checkbox"
-                checked={subclasses.VI[subclass]}
-                // onChange={() => handleSubclassToggle('VI', subclass)}
-              />
+            <div key={subclass} className="subclass-item" style={{marginTop:'10px',marginLeft:'13px'}}>
+                <div style={{display:'flex',alignContent:'center'}}>
+
+              <span className={'checkbox checked'} style={{marginTop:'4px'}}></span>
               <label>{`VI-${subclass}`}</label>
-              <input
-                type="text"
-                placeholder="Name of programme"
-                disabled={!subclasses.VI[subclass]}
-              />
+                </div>
+        
+               <span className="sec-tag" >Name of programme</span>
             </div>
             
         ))}
@@ -167,15 +158,9 @@ export const AddFeeDetails = () => {
             </div> 
           </button>
         </form>
-        Aa
-        <label className="custom-checkbox">
-      <input 
-        type="checkbox" 
-        checked={checked} 
-        // onChange={handleCheckboxChange} 
-      />
-      <span className={`checkbox ${checked ? 'checked' : 'checked'}`}></span>
-    </label>
+      
+      <span className={'checkbox checked'}></span>
+    
  
 </div>
     //   </div>
