@@ -105,7 +105,7 @@ margin-left: 16px;
   }
   
   .active .circle {
-    background-color: #007bff;
+    background-color: rgba(51, 92, 255, 1);
     color: white;
   }
   

@@ -46,16 +46,16 @@ console.log(value);
         <div className="circle"style={{background:progress>0 ?'rgba(31, 193, 107, 1)':''}}>{progress>0  ?<span className={'checkbox checked'} style={{background:'rgba(31, 193, 107, 1)'}}></span>:1}</div>
         <div className="label">Add Fee Details</div>
       </div>
-      <div className="step">
+      <div className = {progress>=1 ? 'step active':'step'}>
       <div className="circle"style={{background:progress>1 ?'rgba(31, 193, 107, 1)':''}}>{progress>1  ?<span className={'checkbox checked'} style={{background:'rgba(31, 193, 107, 1)'}}></span>:2}</div>
         <div className="label">Add Fee Structure</div>
       </div>
-      <div className="step">
+      <div className={progress>=2 ? 'step active':'step'}>
       <div className="circle"style={{background:progress>2 ?'rgba(31, 193, 107, 1)':''}}>{progress>2  ?<span className={'checkbox checked'} style={{background:'rgba(31, 193, 107, 1)'}}></span>:3}</div>
 
         <div className="label">Add Fee Schedule</div>
       </div>
-      <div className="step">
+      <div className={progress>=3 ? 'step active':'step '}>
       <div className="circle"style={{background:progress>3 ?'rgba(31, 193, 107, 1)':''}}>{progress>3  ?<span className={'checkbox checked'} style={{background:'rgba(31, 193, 107, 1)'}}></span>:4}</div>
 
         <div className="label">Preview & Finalise</div>
