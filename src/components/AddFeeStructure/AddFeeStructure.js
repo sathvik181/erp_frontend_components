@@ -1,15 +1,70 @@
-import React from 'react'
-import "./AddFeeStructure.css"
+import React, { useState } from 'react'
 import { Feeicon } from './Feeicon';
 import { SlArrowRight ,SlArrowLeft} from "react-icons/sl";
-// import { BiColor } from 'react-icons/bi';
+import {SlArrowDown } from "react-icons/sl";
 import { FaInfoCircle } from 'react-icons/fa';
-export const AddFeeStructure = () => {
+import "./AddFeeStructure";
+// import { CiCirclePlus } from "react-icons/ci";
+import { HiOutlinePlusSmall } from "react-icons/hi2";
+// import { GlobalContext } from './CreateFeeStructure';
+export const AddFeeStructure = ({handleprogress}) => {
+  // setprogress(progress+1);
+  const [filled,setfilled]=useState(0);
+  // const {progress,setprogress}= useContext(GlobalContext);
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [classes,setclasses] = useState(['Tution fee', 'Fee 2', 'Fee 3', 'Fee 5', 'Fee 6']);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [checkedItems, setCheckedItems] = useState(new Array(classes.length).fill(false));
+  // const [moreoptiondropdown,setmoreoptiondropdown] =useState(false);
+  const [concessionbox,setconcessionbox]=useState(false);
+  const [moreinfo,setmoreinfo] =useState(new Array(classes.length+1).fill(false));
+  const [newfeetype, setnewfeetype] = useState('')
+  const handlePopup = (value) => {
+   console.log(value);
+   if(value==="save"){
+    setclasses([...classes,newfeetype]);
+    console.log(classes);
+    // setclasses((prevState) => {
+    //   const newclasses = [...prevState,newfeetype];
+    //   newCheckedItems[index] = !newCheckedItems[index];
+    //   return newCheckedItems;
+    // });
+   }
+     setIsPopupOpen(!isPopupOpen);
+   }
+  const handleconcessionbox=()=>{
+    setconcessionbox(!concessionbox)
+  }
+  const handleClickCheckbox = async(index,className) => {
+    // console.log(className);
+    // if(checkedItems[index]) setSelectedClasses([...selectedClasses,className]);
+    if(checkedItems[index]==false) await setfilled(filled+1);
+    else await setfilled(filled-1);
+    setCheckedItems((prevState) => {
+      const newCheckedItems = [...prevState];
+      newCheckedItems[index] = !newCheckedItems[index];
+      return newCheckedItems;
+    });
+    console.log(filled);
+    // await handleClassChange(className);
+    // console.log(selectedClasses);
+  };
+  const handlemoreoption =(index)=>{
+    setmoreinfo((prevState) => {
+      const newmoreinfo = [...prevState];
+      newmoreinfo[index] = !newmoreinfo[index];
+      return newmoreinfo;
+    });
+    // setmoreinfo(!moreoptiondropdown);
+  }
     return (
-        <div className="container">
+        <div className="container" >
           <div className="header">
             {/* <img src="your-icon-url.png" alt="Icon" /> */}
+           <div>
+
             <Feeicon/>
+            </div> 
             <div className="headertextbody">
                 <div className="headertext1">
                 Add Schedule to Fee Structure
@@ -25,20 +80,26 @@ export const AddFeeStructure = () => {
 
           
           <div className="grid-header">
-        <div className="grid-item">Category</div>
+        <div className="grid-item1">Category</div>
         <div className="grid-item">Fee Amount</div>
         <div className="grid-item">Tax <span className="optional">(optional)</span></div>
         <div className="grid-item">More options</div>
       </div>
+      {classes.map((className, index) => ( checkedItems[index] &&
+      <div className="tablebody">
+
       <div className="grid">
         <div className="grid-item">
-          <select>
-            <option className='Category'> 
-            Select a Category </option>
-            <option>Tuition Fees</option>
-            <option>Laboratory Fees</option>
-            <option>Sports Fees</option>
-          </select>
+        <div className="select-classes-container">
+            <div className="selected-classes1"  >
+              <div className='componentselect' style={{marginTop:'14px'}}>
+             <label htmlFor="">{className}</label>
+              {/* <span className="dropdown-icon"><SlArrowDown size={10} strokeWidth={80} /></span> */}
+
+              </div>
+            </div>
+            
+          </div>
         </div>
         <div className="grid-item">
           <input type="text" placeholder="Enter amount" />
@@ -46,13 +107,134 @@ export const AddFeeStructure = () => {
         <div className="grid-item">
           <input type="text" placeholder="Enter amount" />
         </div>
-        <div className="grid-item">
-          <select>
-            <option></option>
-            <option>Option 2</option>
-          </select>
+        <div className="grid-item"  onClick={() =>handlemoreoption(index)}>
+
+         { !moreinfo[index] &&  <span className="dropdown-icon1" onClick={() =>handlemoreoption(index)} ><SlArrowDown size={10} strokeWidth={80}/></span>}
+         {moreinfo[index] && <SlArrowRight  size={9} strokeWidth={70} onClick={() =>handlemoreoption(index)}/>}
         </div>
       </div>
+      { moreinfo[index] && <div className='GSTrow'>
+     
+     <div className="gstcol">
+     <div className="toggletext">
+       <label className="toggle-switch">
+     <input type="checkbox" />
+     <span className="slider"></span>
+   </label>
+     Add GST to this category?
+       </div>
+     <div className="grid-item">
+       <input type="text" placeholder="Ex. 8%" />
+     </div>
+
+     </div>
+     <div className="gstcol">
+       <div className="toggletext">
+       <label className="toggle-switch">
+     <input type="checkbox" placeholder="Ex. 2000" />
+     <span className="slider"></span>
+   </label>
+     Add Surcharge
+       </div>
+       <div className="grid-item">
+         <input type="text" placeholder="Enter amount" />
+       </div>
+
+       </div>
+   </div>}
+      </div>
+    
+    
+    ))}
+    <div className="grid">
+        <div className="grid-item">
+        <div className="select-classes-container">
+            <div className="selected-classes1"  onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
+              <div className='componentselect' style={{marginTop:'14px'}}>
+             <label htmlFor="">Select a Component</label>
+              <span className="dropdown-icon"><SlArrowDown size={10} strokeWidth={80} /></span>
+
+              </div>
+            </div>
+            {isDropdownOpen && (
+              <div className="dropdown-menu" style={{width:'300px',height:'296px',marginTop:'-20px'}}>
+                {classes.map((className, index) => (
+                    <div className="">
+                   
+                  <div key={index} className="dropdown-item">
+                    {!checkedItems[index] && (
+            <div className="emptycheckbox" 
+            onClick={() => handleClickCheckbox(index,className)}
+            >
+               
+            </div>
+          )}
+          {checkedItems[index] && (
+            <span className={'checkbox checked'} style={{marginTop:'4px'}} onClick={() => {handleClickCheckbox(index,className)}}></span>
+           
+          )}       
+                  <div className='dropdownrightelements'>
+                    <label htmlFor={className} style={{fontWeight:400,width:'212px'}}>{className} </label>
+
+                    <div className="righticon1" style={{marginLeft:'170px'}}>
+{/* {checkedItems[index] && <span className="dropdown-icon" onClick={() =>handlemoreoption(index)} ><SlArrowDown size={10} strokeWidth={78} /></span>} */}
+                        
+{/* {!checkedItems[index] &&     < SlArrowRight  size={9} strokeWidth={70}/>} */}
+            </div> 
+                  </div>
+                  
+                </div>
+               
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+        <div className="grid-item">
+          <input type="text" placeholder="Enter amount" />
+        </div>
+        <div className="grid-item">
+          <input type="text" placeholder="Enter amount" />
+        </div>
+        <div className="grid-item" onClick={() =>handlemoreoption(classes.length+1)}
+        // onClick={() =>handlemoreoption(index)}
+        >
+
+         { !moreinfo[classes.length+1] &&  <span className="dropdown-icon1" onClick={() =>handlemoreoption(classes.length+1)} ><SlArrowDown size={10} strokeWidth={80}/></span>}
+         {moreinfo[classes.length+1] && <SlArrowRight  size={9} strokeWidth={70} onClick={() =>handlemoreoption(classes.length+1)}/>}
+        </div>
+      </div>
+      {moreinfo[classes.length+1] && <div className='GSTrow'>
+     
+     <div className="gstcol">
+     <div className="toggletext">
+       <label className="toggle-switch">
+     <input type="checkbox" />
+     <span className="slider"></span>
+   </label>
+     Add GST to this category?
+       </div>
+     <div className="grid-item">
+       <input type="text" placeholder="Ex. 8%" />
+     </div>
+
+     </div>
+     <div className="gstcol">
+       <div className="toggletext">
+       <label className="toggle-switch">
+     <input type="checkbox" placeholder="Ex. 2000" />
+     <span className="slider"></span>
+   </label>
+     Add Surcharge
+       </div>
+       <div className="grid-item">
+         <input type="text" placeholder="Enter amount" />
+       </div>
+
+       </div>
+   </div>}
+    
       <div className="total-row">
         <span className='Totalfee'>Total Fee Amount</span>
         <span className='Notavailable'>Not available</span>
@@ -60,8 +242,8 @@ export const AddFeeStructure = () => {
       </div>
       <div className="concession">
 
-      <label className="toggle-switch">
-        <input type="checkbox" />
+      <label className="toggle-switch" >
+        <input type="checkbox" onClick={handleconcessionbox}/>
         <span className="slider"></span>
       </label>
       <span className="label1">
@@ -69,29 +251,61 @@ export const AddFeeStructure = () => {
         <FaInfoCircle  size={15} className="info-icon" />
       </span>
       </div>
-      <div className="footer">
+      {concessionbox && <div className="concession-input">
+          <input type="text" placeholder="Ex. 8%" />
+        </div>}
+      <div className="footer" >
 
-      <div className="add-category-button" >
+      <div className="add-category-button" onClick={()=>handlePopup("open")}>
       <span className="icon">+</span>
       <span>
       Add a Category
         </span>
     </div>
     <div className='buttons'>
-     <div className="backbutton">
+     <div className="backbutton" onClick={()=>handleprogress(0)}>
 
       <button type='submit'className='back-button'>
       <div className="lefticon"><SlArrowLeft size={10} strokeWidth={90}/> </div> 
        Back
       </button>
      </div>
-    <button type="submit" className="continue-button1">Save and Continue
+    <button type="submit" className="continue-button1" style={{background:filled>0?'rgba(51, 92, 255, 1)':'',color: filled>0?'rgba(255, 255, 255, 1)':''}} onClick={()=>handleprogress(2)}>Save and Continue
         <div >
         <SlArrowRight  size={9} strokeWidth={70}/>
             </div> 
           </button>
       </div>
         </div>
+        {/* <div className="div" onClick={handlePopup}>sdsds</div> */}
+       {isPopupOpen && <div className="popup-overlay">
+      <div className="popup">
+        <div className="popup-header">
+
+          <span>
+          <div className="icon-container">
+      <HiOutlinePlusSmall className="icon" />
+    </div>
+
+          Add New Fee type
+          </span>
+       
+          <button className="close-button" onClick={()=>handlePopup("cancel")}>×</button>
+        </div>
+        <div className="popup-body">
+
+          <label>
+            Enter Name of New Fee type <span>*</span>
+          </label>
+            <input type="text" placeholder="Ex. Maintenance Fee" onChange={e => setnewfeetype(e.target.value)}/>
+        </div>
+        <div className="popup-footer">
+          <button className="cancel-button" onClick={()=>handlePopup("cancel")}>Cancel</button>
+          <button className="save-button"  onClick={()=>handlePopup("save")}>Save</button>
+        </div>
+      </div>
+    </div>}
+    
     </div>
       );
 }
