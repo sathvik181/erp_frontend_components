@@ -132,7 +132,7 @@ export const AddFeeDetails = ({handleprogress}) => {
                     <label htmlFor={className} style={{fontWeight:400,width:'212px'}}>{className} </label>
 
                     <div className="righticon1" style={{marginLeft:'170px'}}>
-{checkedItems[index] && <span className="dropdown-icon"><SlArrowDown size={10} strokeWidth={78} /></span>}
+{checkedItems[index] && <span className="dropdown-icon" style={{marginLeft:'4px'}}><SlArrowDown size={10} strokeWidth={78} /></span>}
                         
 {!checkedItems[index] &&     < SlArrowRight  size={9} strokeWidth={70}/>}
             </div> 
