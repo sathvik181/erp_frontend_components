@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/erp_frontend_components/static/css/main.d381ba22.css",
-    "main.js": "/erp_frontend_components/static/js/main.166dfb33.js",
-    "static/js/453.00b7997c.chunk.js": "/erp_frontend_components/static/js/453.00b7997c.chunk.js",
-    "index.html": "/erp_frontend_components/index.html",
-    "main.d381ba22.css.map": "/erp_frontend_components/static/css/main.d381ba22.css.map",
-    "main.166dfb33.js.map": "/erp_frontend_components/static/js/main.166dfb33.js.map",
-    "453.00b7997c.chunk.js.map": "/erp_frontend_components/static/js/453.00b7997c.chunk.js.map"
+    "main.css": "/static/css/main.d381ba22.css",
+    "main.js": "/static/js/main.3ba8cbef.js",
+    "static/js/453.00b7997c.chunk.js": "/static/js/453.00b7997c.chunk.js",
+    "index.html": "/index.html",
+    "main.d381ba22.css.map": "/static/css/main.d381ba22.css.map",
+    "main.3ba8cbef.js.map": "/static/js/main.3ba8cbef.js.map",
+    "453.00b7997c.chunk.js.map": "/static/js/453.00b7997c.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.d381ba22.css",
-    "static/js/main.166dfb33.js"
+    "static/js/main.3ba8cbef.js"
   ]
 }
