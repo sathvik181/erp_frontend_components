@@ -74,7 +74,7 @@ export const AddFeeStructure = ({handleprogress}) => {
     // setmoreinfo(!moreoptiondropdown);
   }
     return (
-        <div className="container" style={{marginLeft:'430px'}}>
+        <div className="container" >
           <div className="header">
             {/* <img src="your-icon-url.png" alt="Icon" /> */}
            <div>

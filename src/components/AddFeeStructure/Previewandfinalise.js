@@ -6,7 +6,7 @@ import { GoArrowRight } from "react-icons/go";
 
 export const Previewandfinalise = ({handleprogress}) => {
   return (
-    <div className="container1"  style={{marginLeft:'450px',marginTop:'60px'}}>
+    <div className="container1"  style={{marginTop:'60px'}}>
 <div className="fee-structure" >
       <div className="header">
         <h1>Name of Fee Structure <span>ID: VI-B23</span></h1>

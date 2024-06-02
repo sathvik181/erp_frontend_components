@@ -34,7 +34,7 @@ console.log(value);
     // let index=0;
     // let currentStep=0;
   return (
-   <div className="CreateFeeStructure">
+   <div className="CreateFeeStructure" >
     <div className="sidebar" >
         <div className="sidebarheader">
             <div className="sidebarheadertext">
@@ -81,10 +81,24 @@ with our guide</div>
 </div>
 
         </div>
+        <div style={{ 
+  flex: '1', 
+  display: 'flex', 
+  justifyContent: 'center', 
+  alignItems: 'center', 
+  flexDirection: 'column', 
+  marginLeft: '272px', 
+  // marginTop: '20px',
+  position: 'relative', 
+  // background:'red'
+}}>
+          {/* hhhh */}
         {progress===0 && <AddFeeDetails handleprogress={handleprogress}/>}
         {progress===1 && <AddFeeStructure handleprogress={handleprogress}/>}
        {progress===2 && <AddFeeShedule handleprogress={handleprogress}/>}
        {progress===3 && <Previewandfinalise handleprogress={handleprogress}/>}
+
+        </div>
         <div style={{ padding: '20px' }}>
       {/* <h1>React Confirmation Modal Example</h1> */}
       <button onClick={handleModal } className='Cancel' >Cancel <RxCross1 className="crossicon"size={11}strokeWidth={0.5} />

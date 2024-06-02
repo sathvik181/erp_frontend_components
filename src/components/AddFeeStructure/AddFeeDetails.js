@@ -75,7 +75,7 @@ export const AddFeeDetails = ({handleprogress}) => {
         // console.log(selectedClasses);
       };
     return (
-      <div className="form-container" style={{marginLeft:'670px'}}>
+      <div className="form-container" >
         <div className="form-header">
             
          <Profileicon/>
