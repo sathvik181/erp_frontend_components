@@ -95,7 +95,7 @@ export const AddFeeStructure = ({handleprogress}) => {
           <div className="wholegrid">
 
           
-          <div className="grid-header">
+          <div className="grid-header" style={{width: '900px'}}>
         <div className="grid-item1">Category</div>
         <div className="grid-item">Fee Amount</div>
         <div className="grid-item">Tax <span className="optional">(optional)</span></div>

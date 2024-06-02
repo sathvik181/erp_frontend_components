@@ -173,6 +173,10 @@ border: 1px ; */
 /* background-color: red; */
 
   }
+  .wholegrid .grid-header{
+    border-radius: 4px;
+    width: 901px;
+  }
   .selected-classes1 label {
     color: rgba(51, 92, 255, 1);
     /* font-family: Inter; */

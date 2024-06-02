@@ -240,7 +240,7 @@ export const AddFeeShedule = ({handleprogress}) => {
             <div className="wholegrid">
   
             
-            <div className="grid-header">
+            <div className="grid-header" >
           <div className="grid-item1">Name of Term</div>
           <div className="grid-item">Fee Amount %</div>
           <div className="grid-item">Fee In Amount </div>
