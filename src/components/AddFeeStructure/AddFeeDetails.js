@@ -94,8 +94,8 @@ export const AddFeeDetails = ({handleprogress}) => {
             />
             
           </div>
-            <label htmlFor="id">Enter Academic Programme <div className="mandatory" style={{color:"rgba(251, 55, 72, 1)"}}>*</div></label>
-          <div className="form-group">
+            {/* <label htmlFor="id">Enter Academic Programme <div className="mandatory" style={{color:"rgba(251, 55, 72, 1)"}}>*</div></label> */}
+          {/* <div className="form-group">
             <input
               type="text"
               id="id"
@@ -103,7 +103,7 @@ export const AddFeeDetails = ({handleprogress}) => {
               placeholder='James Brown'
               onChange={(e) => setId(e.target.value)}
             />
-          </div>
+          </div> */}
             <label>Select Classes <div className="mandatory" style={{color:"rgba(251, 55, 72, 1)"}}>*</div></label>
           <div className="select-classes-container">
             <div className="selected-classes" style={{display:'flex',alignContent:'left',justifyContent:'left'}} onClick={() => setIsDropdownOpen(!isDropdownOpen)}>

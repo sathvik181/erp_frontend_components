@@ -101,7 +101,7 @@ export const AddFeeStructure = ({handleprogress}) => {
         <div className="grid-item">Tax <span className="optional">(optional)</span></div>
         <div className="grid-item">More options</div>
       </div>
-      {classes.map((className, index) => ( checkedItems[index] &&
+      {classes.map((className, index) => (  checkedItems[index] &&
       <div className="tablebody" style={{ background: moreinfo[index]? 'rgba(253, 253, 253, 1)':''}}>
 
       <div className="grid">
