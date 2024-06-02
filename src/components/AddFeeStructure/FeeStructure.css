@@ -4,6 +4,7 @@
   /* align-items: center; */
 }
 .sidebar{
+  position: fixed;
       display: flex;
     justify-content: flex-start;
     width: 272px;
@@ -13,7 +14,7 @@
    
 gap: 0px;
 border: 0px 1px 0px 0px;
-opacity: 0px;
+
 overflow: hidden;
 }
 .sidebarheader{
@@ -127,7 +128,7 @@ padding: 16px ;
 gap: 12px;
 border-radius: 1px;
 border: 1px ;
-opacity: 0px;
+
 background: #FFFFFF;
 border: 1px solid #E1E4EA;
 border-radius: 10px;
@@ -236,7 +237,7 @@ text-align: center;
 width: 456px;
 height: 32px;
 gap: 0px;
-opacity: 0px;
+
 
 
 }
@@ -295,7 +296,7 @@ box-shadow: 0px 1px 2px 0px #0A0D1408;
 
 
 border: 1px 0px 0px 0px;
-opacity: 0px;
+
 
 
 box-shadow: 0px 1px 2px 0px #0E121B3D;
@@ -368,7 +369,7 @@ width: 457px;
 gap: 2px;
 
 border: 1px 1px 1px 1px;
-opacity: 0px;
+
 /* border-radius: var(--radius-full); */
 
 font-size: 12px;
@@ -382,7 +383,7 @@ padding: 2px 8px 2px 8px;
 gap: 2px;
 /* border-radius: var(--radius-full); */
 border: 1px 1px 0px 1px;
-opacity: 0px;
+
 
 
 }
@@ -391,7 +392,7 @@ opacity: 0px;
   width:202px;
 height: (20px);
 gap: 8px;
-opacity: 0px;
+
 
 }
 .class-tag{
@@ -408,7 +409,7 @@ opacity: 0px;
 gap: 2px;
 
 border: 1px 1px 1px 1px;
-opacity: 0px;
+
 /* border-radius: var(--radius-full); */
 
 font-size: 12px;
@@ -422,7 +423,7 @@ padding: 2px 8px 2px 8px;
 gap: 2px;
 /* border-radius: var(--radius-full); */
 border: 1px 1px 0px 1px;
-opacity: 0px;
+
 
 
 
@@ -517,7 +518,7 @@ padding: 8px 0px 0px 0px;
 gap: 4px;
 border-radius: var(--radius-4);
 border: 1px 0px 0px 0px;
-opacity: 0px;
+
 background: var(--bg-white-0, rgba(255, 255, 255, 1));
 border: 1px solid var(--stroke-soft-200, rgba(225, 228, 234, 1));
 box-shadow: 0px 16px 32px -12px rgba(14, 18, 27, 0.1); */
@@ -561,7 +562,7 @@ margin-left: 8px;
   left: 2px;
   gap: 0px;
   border-radius: 4px ;
-  opacity: 0px;
+  
   background-color: #335CFF;
 }
 /* ::before used to insert content before an element's actual content. */
@@ -573,7 +574,7 @@ height: 1.6px;
 top: 9.25px;
 left: 6px;
 gap: 0px;
-opacity: 0px;
+
 
 }
 
@@ -600,7 +601,7 @@ gap: 0px;
   left: 3.5px;
   /* gap: 0px; */
   border-radius: 2.6px ;
-  /* opacity: 0px; */
+ 
   background: var(--bg-white-0, rgba(255, 255, 255, 1));
   box-shadow: 0px 2px 2px 0px rgba(27, 28, 29, 0.12);
 /* border-color: red; */
@@ -616,7 +617,7 @@ padding: 10px 0px 0px 0px;
 gap: 4px;
 border-radius: 10px;
 border: 3px;
-opacity: 0px;
+
 background: var(--bg-white-0, rgba(255, 255, 255, 1));
 box-shadow: 0px 1px 2px 0px rgba(10, 13, 20, 0.03);
 border: 1px solid rgba(225, 228, 234, 1); 
@@ -644,7 +645,7 @@ gap: 0px;
 border-radius: 4px ;
 border: 1px ;
 /* justify: space-between; */
-opacity: 0px;
+
 background:  rgba(255, 255, 255, 1);
 box-shadow: 0px 1px 2px 0px rgba(10, 13, 20, 0.03);
 width: 436px;

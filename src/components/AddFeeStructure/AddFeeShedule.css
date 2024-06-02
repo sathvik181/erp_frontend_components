@@ -6,7 +6,7 @@
     /* gap: 2px; */
     /* border-radius: var(--radius-full); */
     /* border: 1px 1px 0px 1px; */
-    /* opacity: 0px; */
+
     /* background: var(--state-faded-lighter, rgba(242, 245, 248, 1)); */
     /* display: flex; */
     /* padding-top: 2px; */
@@ -26,7 +26,7 @@ color:  rgba(113, 119, 132, 1);
 /* */
 /* border-radius: var(--radius-full); */
 border: 1px 1px 0px 1px;
-opacity: 0px;
+
 font-size: 12px;
 font-weight: 500;
 line-height: 12px;
@@ -37,7 +37,7 @@ gap: 2px;
 border-radius: var(--radius-full);
 border-radius: 999px;
 border: 1px 1px 0px 1px;
-opacity: 0px;
+
 
 }
 .grid{
@@ -52,7 +52,7 @@ opacity: 0px;
     padding: 10px 0px 0px 0px;
     gap: 5px;
     border-radius:10px;
-    opacity: 0px;
+
     /* justify-content: center; */
     color: rgba(51, 92, 255, 1);
 

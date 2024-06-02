@@ -6,7 +6,7 @@ import { GoArrowRight } from "react-icons/go";
 
 export const Previewandfinalise = ({handleprogress}) => {
   return (
-    <div className="container1"  >
+    <div className="container1"  style={{marginLeft:'450px',marginTop:'60px'}}>
 <div className="fee-structure" >
       <div className="header">
         <h1>Name of Fee Structure <span>ID: VI-B23</span></h1>
@@ -37,7 +37,7 @@ export const Previewandfinalise = ({handleprogress}) => {
         <div className="wholegrid1" >
   
             
-            <div className="grid-header" style={{  gridTemplateColumns: 'repeat(6, 1fr)'}}>
+            <div className="grid-header" style={{  gridTemplateColumns: 'repeat(6, 1fr)',width:"846px"}}>
           <div className="grid-item1"  >Name of Fee Category</div>
           <div className="grid-item2" >Fee Amount </div>
           <div className="grid-item3" style={{marginLeft:'15px'}}>Tax </div>
@@ -77,10 +77,10 @@ export const Previewandfinalise = ({handleprogress}) => {
         </div> 
         <div className="fee-components" style={{height:'220px',marginTop:'20px'}}>
         <h2>Fee Schedule</h2>
-        <div className="wholegrid1"  style={{height:'228px'}}>
+        <div className="wholegrid1"  style={{height:'240px'}}>
   
             
-            <div className="grid-header" >
+            <div className="grid-header"  style={{width:"846px"}}>
           <div className="grid-item1"  >Term Name</div>
           <div className="grid-item2" >Fee Percentage</div>
           <div className="grid-item3">Fee Amount </div>
@@ -103,7 +103,7 @@ export const Previewandfinalise = ({handleprogress}) => {
         NA
         </div>
         </div>
-           ))}<div className="total-row" style={{borderTop: '0' }}>
+           ))}<div className="total-row" style={{borderTop: '0',borderBottom: '0' }}>
            <span className='Totalfee'>Total Fee Amount</span>
            <span className='Totalper' style={{marginLeft:'-10px'}}>100%</span>
            <span className='TotalRupees' style={{marginLeft:'70px'}}>  ₹60,000</span>

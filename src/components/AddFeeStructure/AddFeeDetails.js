@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import { Profileicon } from './Profileicon';
 import "./AddFeeStructure.css";
 // import { RiArrowDropDownLine } from "react-icons/ri";
@@ -34,6 +34,24 @@ export const AddFeeDetails = ({handleprogress}) => {
     });
     const terms = ['1 Terms','2 Terms','3 Terms','4 Terms'];
     const [checkedItems, setCheckedItems] = useState(new Array(classes.length).fill(false));
+    const dropdownRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsDropdownOpen(false);
+        setIsDropdownOpen2(false);
+      }
+    };
+
+    // Bind the event listener
+    document.addEventListener('mousedown', handleClickOutside);
+    
+    // Unbind the event listener on cleanup
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
     const handleoptionselect=(termName)=>{
      setoption(termName);
      setIsDropdownOpen2(!isDropdownOpen2);
@@ -57,7 +75,7 @@ export const AddFeeDetails = ({handleprogress}) => {
         // console.log(selectedClasses);
       };
     return (
-      <div className="form-container">
+      <div className="form-container" style={{marginLeft:'670px'}}>
         <div className="form-header">
             
          <Profileicon/>
@@ -95,7 +113,7 @@ export const AddFeeDetails = ({handleprogress}) => {
               <span className="dropdown-icon1" ><SlArrowDown size={10} /></span>
             </div>
             {isDropdownOpen && (
-              <div className="dropdown-menu">
+              <div className="dropdown-menu" ref={dropdownRef}>
                 {classes.map((className, index) => (
                     <div className="">
                    
@@ -153,7 +171,7 @@ export const AddFeeDetails = ({handleprogress}) => {
              <span className="dropdown-icon1"><SlArrowDown size={10} strokeWidth={78} /></span>
             </div>
             {isDropdownOpen2 && (
-              <div className="dropdown-menu">
+              <div className="dropdown-menu" ref={dropdownRef}>
                {terms.map((termName, index) => (
                   <div key={index} className="dropdown-item" >
               <label  style={{fontWeight:400,width:'212px'}} onClick={()=>{handleoptionselect(termName)}}>{termName} </label>

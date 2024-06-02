@@ -41,7 +41,7 @@ const DatePickerWrapper = styled.div`
     // box-shadow: 0px -4px 10px rgba(0, 0, 0, 0.1); 
     // gap: 6px;
     // border-radius: 8px;
-    // opacity: 0px;
+    // //
     // display:flex;
     
     //
@@ -58,7 +58,7 @@ const DatePickerWrapper = styled.div`
   padding: 6px;
   gap: 6px;
   border-radius: 8px;
-  opacity: 0px;
+  ////
   display:flex;
   justify-content:center;
   margin-top:10px;
@@ -104,7 +104,7 @@ font-weight: 500;
     // padding: 10px 0px 10px 0px;
     // gap: 8px;
     border-radius: 8px;
-    // opacity: 0px;
+    // //
   
 font-size: 14px;
 font-weight: 500;
@@ -132,7 +132,7 @@ font-weight: 500;
     padding: 2px ;
     gap: 2px;
     border-radius: 6px;
-    opacity: 0px;
+    ////
     
   }
   
@@ -186,9 +186,13 @@ font-weight: 500;
 export const AddFeeShedule = ({handleprogress}) => {
   // const {progress,setprogress}= useContext(GlobalContext);
   const [startDate, setStartDate] = useState(null);
+  const [applydate,setapplydate]=useState(false)
+  const [opencalendar,setopencalendar]=useState(false);
+   const [startDate2, setStartDate2] = useState(null);
+  const [applydate2,setapplydate2]=useState(false)
+  const [opencalendar2,setopencalendar2]=useState(false);
     const classes = ['Class VI', 'Class VII', 'Class VIII', 'Class IX', 'Class X'];
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-    const [opencalendar,setopencalendar]=useState(false);
     const [checkedItems, setCheckedItems] = useState(new Array(classes.length).fill(false));
     const [moreoptiondropdown,setmoreoptiondropdown] =useState(false);
     const handleClickCheckbox = async(index,className) => {
@@ -202,14 +206,20 @@ export const AddFeeShedule = ({handleprogress}) => {
       // await handleClassChange(className);
       // console.log(selectedClasses);
     };
-    const handlecalendar=()=>{
+    const handlecalendarselect=()=>{
+      setopencalendar(false);
+    }
+    const handlecalendar=(value)=>{
+      if(value==1)
       setopencalendar(true);
+    else setopencalendar2(true);
+      console.log("ssfdfdf");
     }
     const handlemoreoption =()=>{
      setmoreoptiondropdown(!moreoptiondropdown);
     }
       return (
-          <div className="container">
+          <div className="container" style={{marginLeft:'430px'}}>
             <div className="header">
               {/* <img src="your-icon-url.png" alt="Icon" /> */}
               <div className="headericon">
@@ -246,7 +256,7 @@ export const AddFeeShedule = ({handleprogress}) => {
         <div className="grid-item">
           <input type="text" placeholder="NA" />
         </div>
-        <div className="grid-item" onClick={handlecalendar}>
+        <div className="grid-item" >
         <div className="griddate">
           <div className="calendaricon"  >
             {opencalendar &&
@@ -255,18 +265,20 @@ export const AddFeeShedule = ({handleprogress}) => {
         selected={startDate}
         onChange={date => {setStartDate(date);}}
           // showMonthYearPicker
-          // onSelect={setopencalendar(true)}
+          // onSelect={handlecalendarselect}
           inline
-          // shouldCloseOnSelect={false}
+        
       />
       <div className="button-group">
-        <button className="cancel-button" onClick={() => setStartDate(new Date())}>Cancel</button>  
-        <button className="apply-button" onClick={() => console.log(startDate)}>Apply</button>
+        <button className="cancel-button"  onClick={() => {setopencalendar(false);console.log(opencalendar)}}>Cancel</button>  
+        <button className="apply-button" onClick={() => {setopencalendar(false);setapplydate(true)}}>Apply</button>
       </div>  
     </DatePickerWrapper>  }
-        {!opencalendar && <FaCalendarDay />}
+        {!applydate && <FaCalendarDay style={{cursor:'pointer'}} onClick={() => {handlecalendar(1)}}/>}
           </div>
-    {!opencalendar &&    "Select a date"}
+    {!applydate && <div onClick={() => {handlecalendar(1)}} style={{cursor:'pointer'}}>Select a date</div>  }
+    {applydate && <div>{startDate.toLocaleDateString()}</div>}
+
           </div>
         </div>
      
@@ -284,11 +296,27 @@ export const AddFeeShedule = ({handleprogress}) => {
         </div>
         <div className="grid-item" onClick={handlemoreoption}>
         <div className="griddate">
-        <div className="calendaricon"  >
-            {/* {opencalendar && <DatePickers/>} */}
-        <FaCalendarDay />
+              <div className="calendaricon"  >
+            {opencalendar2 &&
+             <DatePickerWrapper>
+      <DatePicker
+        selected={startDate2}
+        onChange={date => {setStartDate2(date);}}
+          // showMonthYearPicker
+          // onSelect={handlecalendarselect}
+          inline
+        
+      />
+      <div className="button-group">
+        <button className="cancel-button"  onClick={() => {setopencalendar2(false);console.log(opencalendar2)}}>Cancel</button>  
+        <button className="apply-button" onClick={() => {setopencalendar2(false);setapplydate2(true)}}>Apply</button>
+      </div>  
+    </DatePickerWrapper>  }
+        {!applydate2 && <FaCalendarDay style={{cursor:'pointer'}} onClick={() => {handlecalendar(2)}}/>}
           </div>
-        Select a date
+    {!applydate2 && <div onClick={() => {handlecalendar(2)}} style={{cursor:'pointer'}}>Select a date</div>  }
+    {applydate2 && <div>{startDate2.toLocaleDateString()}</div>}
+
           </div>
         {/* </div> */}
         </div>

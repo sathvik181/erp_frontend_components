@@ -31,7 +31,7 @@ const DatePickerWrapper = styled.div`
     // box-shadow: 0px -4px 10px rgba(0, 0, 0, 0.1); 
     // gap: 6px;
     // border-radius: 8px;
-    // opacity: 0px;
+   
  
   }
   
@@ -45,7 +45,7 @@ height: 36px;
 padding: 6px 0px 0px 0px;
 gap: 6px;
 border-radius: 8px;
-opacity: 0px;
+
 display:flex;
 justify-content:center;
 margin-top:10px;
@@ -86,7 +86,7 @@ font-weight: 500;
     // padding: 10px 0px 10px 0px;
     // gap: 8px;
     border-radius: 8px;
-    // opacity: 0px;
+   
   
 font-size: 14px;
 font-weight: 500;

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { Feeicon } from './Feeicon';
 import { SlArrowRight ,SlArrowLeft} from "react-icons/sl";
 import {SlArrowDown } from "react-icons/sl";
@@ -6,6 +6,7 @@ import { FaInfoCircle } from 'react-icons/fa';
 import "./AddFeeStructure.css";
 // import { CiCirclePlus } from "react-icons/ci";
 import { HiOutlinePlusSmall } from "react-icons/hi2";
+
 // import { GlobalContext } from './CreateFeeStructure';
 export const AddFeeStructure = ({handleprogress}) => {
   // setprogress(progress+1);
@@ -18,7 +19,22 @@ export const AddFeeStructure = ({handleprogress}) => {
   // const [moreoptiondropdown,setmoreoptiondropdown] =useState(false);
   const [concessionbox,setconcessionbox]=useState(false);
   const [moreinfo,setmoreinfo] =useState(new Array(classes.length+1).fill(false));
-  const [newfeetype, setnewfeetype] = useState('')
+  const [newfeetype, setnewfeetype] = useState('');
+  const dropdownRef = useRef(null);
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsDropdownOpen(false);
+      }
+    };
+
+  
+    document.addEventListener('mousedown', handleClickOutside);
+    
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
   const handlePopup = (value) => {
    console.log(value);
    if(value==="save"){
@@ -58,7 +74,7 @@ export const AddFeeStructure = ({handleprogress}) => {
     // setmoreinfo(!moreoptiondropdown);
   }
     return (
-        <div className="container" >
+        <div className="container" style={{marginLeft:'430px'}}>
           <div className="header">
             {/* <img src="your-icon-url.png" alt="Icon" /> */}
            <div>
@@ -86,7 +102,7 @@ export const AddFeeStructure = ({handleprogress}) => {
         <div className="grid-item">More options</div>
       </div>
       {classes.map((className, index) => ( checkedItems[index] &&
-      <div className="tablebody">
+      <div className="tablebody" style={{ background: moreinfo[index]? 'rgba(253, 253, 253, 1)':''}}>
 
       <div className="grid">
         <div className="grid-item">
@@ -107,13 +123,13 @@ export const AddFeeStructure = ({handleprogress}) => {
         <div className="grid-item">
           <input type="text" placeholder="Enter amount" />
         </div>
-        <div className="grid-item"  onClick={() =>handlemoreoption(index)}>
+        <div className="grid-item"  onClick={() =>handlemoreoption(index)} >
 
          { !moreinfo[index] &&  <span className="dropdown-icon1" onClick={() =>handlemoreoption(index)} ><SlArrowDown size={10} strokeWidth={80}/></span>}
          {moreinfo[index] && <SlArrowRight  size={9} strokeWidth={70} onClick={() =>handlemoreoption(index)}/>}
         </div>
       </div>
-      { moreinfo[index] && <div className='GSTrow'>
+      { moreinfo[index] && <div className='GSTrow' style={{width:'882px'}} >
      
      <div className="gstcol">
      <div className="toggletext">
@@ -146,8 +162,8 @@ export const AddFeeStructure = ({handleprogress}) => {
     
     
     ))}
-    <div className="grid">
-        <div className="grid-item">
+    <div className="grid" style={{ background: moreinfo[classes.length+1] ? 'rgba(253, 253, 253, 1)':''}}>
+        <div className="grid-item" >
         <div className="select-classes-container">
             <div className="selected-classes1"  onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
               <div className='componentselect' style={{marginTop:'14px'}}>
@@ -157,7 +173,7 @@ export const AddFeeStructure = ({handleprogress}) => {
               </div>
             </div>
             {isDropdownOpen && (
-              <div className="dropdown-menu" style={{width:'300px',height:'296px',marginTop:'-20px'}}>
+              <div className="dropdown-menu" ref={dropdownRef} style={{width:'300px',height:'296px',marginTop:'-20px'}}>
                 {classes.map((className, index) => (
                     <div className="">
                    
@@ -205,9 +221,9 @@ export const AddFeeStructure = ({handleprogress}) => {
          {moreinfo[classes.length+1] && <SlArrowRight  size={9} strokeWidth={70} onClick={() =>handlemoreoption(classes.length+1)}/>}
         </div>
       </div>
-      {moreinfo[classes.length+1] && <div className='GSTrow'>
+      {moreinfo[classes.length+1] && <div className='GSTrow' style={{width:'882px'}} >
      
-     <div className="gstcol">
+     <div className="gstcol" >
      <div className="toggletext">
        <label className="toggle-switch">
      <input type="checkbox" />

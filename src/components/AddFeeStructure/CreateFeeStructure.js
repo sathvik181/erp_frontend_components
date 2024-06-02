@@ -35,7 +35,7 @@ console.log(value);
     // let currentStep=0;
   return (
    <div className="CreateFeeStructure">
-    <div className="sidebar">
+    <div className="sidebar" >
         <div className="sidebarheader">
             <div className="sidebarheadertext">
             CREATE NEW FEE STRUCTURE
@@ -43,7 +43,7 @@ console.log(value);
             </div>
             <div className="stepper">
       <div className="step active">
-        <div className="circle"style={{background:progress>0 ?'rgba(31, 193, 107, 1)':''}}>{progress>0  ?<span className={'checkbox checked'} style={{background:'rgba(31, 193, 107, 1)'}}></span>:1}</div>
+        <div className="circle"style={{background:progress>0 ?'rgba(31, 193, 107, 1)': ''}}>{progress>0  ?<span className={'checkbox checked'} style={{background:'rgba(31, 193, 107, 1)'}}></span>:1}</div>
         <div className="label">Add Fee Details</div>
       </div>
       <div className = {progress>=1 ? 'step active':'step'}>
