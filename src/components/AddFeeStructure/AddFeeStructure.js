@@ -123,10 +123,14 @@ export const AddFeeStructure = ({handleprogress}) => {
         <div className="grid-item">
           <input type="text" placeholder="Enter amount" />
         </div>
-        <div className="grid-item"  onClick={() =>handlemoreoption(index)} >
+        <div className="grid-item"   >
 
-         { !moreinfo[index] &&  <span className="dropdown-icon1" onClick={() =>handlemoreoption(index)} ><SlArrowDown size={10} strokeWidth={80}/></span>}
+         { !moreinfo[index] &&  <span className="dropdown-icon1" ><SlArrowDown size={10} strokeWidth={80} onClick={() =>handlemoreoption(index)} /></span>}
          {moreinfo[index] && <SlArrowRight  size={9} strokeWidth={70} onClick={() =>handlemoreoption(index)}/>}
+         <svg  style={{marginLeft:'25px',cursor:'pointer'}}  onClick={()=>handleClickCheckbox(index)} width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" >
+<path d="M9.99956 8.93955L13.7121 5.22705L14.7726 6.28755L11.0601 10.0001L14.7726 13.7126L13.7121 14.7731L9.99956 11.0606L6.28706 14.7731L5.22656 13.7126L8.93906 10.0001L5.22656 6.28755L6.28706 5.22705L9.99956 8.93955Z" fill="#FB3748"/>
+</svg>
+
         </div>
       </div>
       { moreinfo[index] && <div className='GSTrow' style={{width:'882px'}} >
@@ -190,7 +194,7 @@ export const AddFeeStructure = ({handleprogress}) => {
            
           )}       
                   <div className='dropdownrightelements'>
-                    <label htmlFor={className} style={{fontWeight:400,width:'212px'}}>{className} </label>
+                    <label  style={{fontWeight:400,width:'212px'}}>{className} </label>
 
                     <div className="righticon1" style={{marginLeft:'170px'}}>
 {/* {checkedItems[index] && <span className="dropdown-icon" onClick={() =>handlemoreoption(index)} ><SlArrowDown size={10} strokeWidth={78} /></span>} */}
