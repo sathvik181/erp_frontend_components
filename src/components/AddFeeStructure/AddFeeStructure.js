@@ -3,7 +3,7 @@ import { Feeicon } from './Feeicon';
 import { SlArrowRight ,SlArrowLeft} from "react-icons/sl";
 import {SlArrowDown } from "react-icons/sl";
 import { FaInfoCircle } from 'react-icons/fa';
-import "./AddFeeStructure";
+import "./AddFeeStructure.css";
 // import { CiCirclePlus } from "react-icons/ci";
 import { HiOutlinePlusSmall } from "react-icons/hi2";
 // import { GlobalContext } from './CreateFeeStructure';

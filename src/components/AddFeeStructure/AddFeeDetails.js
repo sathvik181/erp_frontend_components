@@ -146,7 +146,7 @@ export const AddFeeDetails = ({handleprogress}) => {
               </div>
             )}
           </div>
-            <label htmlFor="terms">Select Number of Academic Term(s)  <div className="mandatory" style={{color:"rgba(251, 55, 72, 1)"}}>*</div></label>
+            <label >Select Number of Academic Term(s)  <div className="mandatory" style={{color:"rgba(251, 55, 72, 1)"}}>*</div></label>
             <div className="select-classes-container">
             <div className="AcademicDropdown"  onClick={() => setIsDropdownOpen2(!isDropdownOpen2)}>
              {option}
@@ -156,7 +156,7 @@ export const AddFeeDetails = ({handleprogress}) => {
               <div className="dropdown-menu">
                {terms.map((termName, index) => (
                   <div key={index} className="dropdown-item" >
-              <label htmlFor={termName} style={{fontWeight:400,width:'212px'}} onClick={()=>{handleoptionselect(termName)}}>{termName} </label>
+              <label  style={{fontWeight:400,width:'212px'}} onClick={()=>{handleoptionselect(termName)}}>{termName} </label>
                 </div>
                ))}
               </div>
