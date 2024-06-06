@@ -177,15 +177,12 @@ font-weight: 500;
   }
 `;
 export const AddFeeShedule = ({handleprogress}) => {
-  // const {progress,setprogress}= useContext(GlobalContext);
   const [startDate, setStartDate] = useStartDate(null);
   const [applydate, setApplyDate] = useApplyDate();
   const [opencalendar, setOpenCalendar] = useOpenCalendar();
   const [startDate2, setStartDate2] = useStartDate();
   const [applydate2, setApplyDate2] = useApplyDate();
   const [opencalendar2, setOpenCalendar2] = useOpenCalendar();
-  // const classes = ['Class VI', 'Class VII', 'Class VIII', 'Class IX', 'Class X'];
-
   const [moreoptiondropdown, setMoreOptionDropdown] = useMoreOptionDropdown();
   
   
@@ -193,7 +190,6 @@ export const AddFeeShedule = ({handleprogress}) => {
       if(value===1)
       setOpenCalendar(true);
     else setOpenCalendar2(true);
-      console.log("ssfdfdf");
     }
     const handlemoreoption =()=>{
      setMoreOptionDropdown(!moreoptiondropdown);
@@ -201,25 +197,21 @@ export const AddFeeShedule = ({handleprogress}) => {
       return (
           <div className="container" >
             <div className="header">
-              {/* <img src="your-icon-url.png" alt="Icon" /> */}
               <div className="headericon">
-
-              <Feesheduleicon/>
+                 <Feesheduleicon/>
               </div>
               <div className="headertextbody">
                   <div className="headertext1">
-                  Add Schedule to Fee Structure
+                        Add Schedule to Fee Structure
                   </div>
              <div className="headertext2">
-             Add Due dates and Fee amount for the terms
+                  Add Due dates and Fee amount for the terms
              </div>
               <p></p>
   
               </div>
             </div>
             <div className="wholegrid">
-  
-            
             <div className="grid-header" >
           <div className="grid-item1">Name of Term</div>
           <div className="grid-item">Fee Amount %</div>
@@ -244,8 +236,6 @@ export const AddFeeShedule = ({handleprogress}) => {
       <DatePicker
         selected={startDate}
         onChange={date => {setStartDate(date);}}
-          // showMonthYearPicker
-          // onSelect={handlecalendarselect}
           inline
         
       />
@@ -282,8 +272,6 @@ export const AddFeeShedule = ({handleprogress}) => {
       <DatePicker
         selected={startDate2}
         onChange={date => {setStartDate2(date);}}
-          // showMonthYearPicker
-          // onSelect={handlecalendarselect}
           inline
         
       />
@@ -296,15 +284,9 @@ export const AddFeeShedule = ({handleprogress}) => {
           </div>
     {!applydate2 && <div onClick={() => {handlecalendar(2)}} style={{cursor:'pointer'}}>Select a date</div>  }
     {applydate2 && <div>{startDate2.toLocaleDateString()}</div>}
-
           </div>
-        {/* </div> */}
         </div>
-     
-        
         </div>
-        
-     
         <div className="total-row">
           <span className='Totalfee'>Total Fee Amount</span>
           <span className='Totalper'>Total in %</span>

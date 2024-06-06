@@ -1,66 +1,36 @@
 .sec-tag1{
     width: 66px;
     height: 28px;
-
-    /* padding: 8px 12px 8px 12px; */
-    /* gap: 2px; */
-    /* border-radius: var(--radius-full); */
-    /* border: 1px 1px 0px 1px; */
-
-    /* background: var(--state-faded-lighter, rgba(242, 245, 248, 1)); */
-    /* display: flex; */
-    /* padding-top: 2px; */
-    /* font-family: Inter; */
-
-/* text-align: left; */
-color: rgba(113, 119, 132, 1);
-/* margin-top: 20px; */
-/* padding-top: 12px; */
-/* width: 66px;
-height: 28px; */
-background:  rgba(242, 245, 248, 1);
-
-/* background-color: #F2F5F8; */
-color:  rgba(113, 119, 132, 1);
-
-/* */
-/* border-radius: var(--radius-full); */
-border: 1px 1px 0px 1px;
-
-font-size: 12px;
-font-weight: 500;
-line-height: 12px;
-letter-spacing: 0.02em;
-
-padding: 8px 12px 8px 12px;
-gap: 2px;
-border-radius: var(--radius-full);
-border-radius: 999px;
-border: 1px 1px 0px 1px;
-
-
+    color: rgba(113, 119, 132, 1);
+    background:  rgba(242, 245, 248, 1);
+    color:  rgba(113, 119, 132, 1);
+    border: 1px 1px 0px 1px;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 12px;
+    letter-spacing: 0.02em;
+    padding: 8px 12px 8px 12px;
+    gap: 2px;
+    border-radius: var(--radius-full);
+    border-radius: 999px;
+    border: 1px 1px 0px 1px;
 }
 .grid{
     border-bottom: 1px solid var(--stroke-soft-200, rgba(225, 228, 234, 1))
 }
 .griddate{
     display: flex;
-    /* justify-content: left; */
-    /* width: 95px; */
     width: 139px;
     height:40px;
     padding: 10px 0px 0px 0px;
     gap: 5px;
     border-radius:10px;
-
-    /* justify-content: center; */
     color: rgba(51, 92, 255, 1);
-
-font-size: 14px;
-font-weight: 500;
-line-height: 20px;
-letter-spacing: -0.006em;
-text-align: left;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    letter-spacing: -0.006em;
+    text-align: left;
 
 
 }
@@ -68,7 +38,6 @@ text-align: left;
     margin-top: 2px;
 }
 .Totalper{
-    /* font-family: Inter; */
     font-size: 14px;
     font-weight: 500;
     line-height: 20px;
@@ -80,13 +49,12 @@ text-align: left;
 
 }
 .TotalRupees{
-    /* font-family: Inter; */
-font-size: 14px;
-font-weight: 500;
-line-height: 20px;
-letter-spacing: -0.006em;
-text-align: left;
-color: rgba(14, 18, 27, 1);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    letter-spacing: -0.006em;
+    text-align: left;
+    color: rgba(14, 18, 27, 1);
 
 }
 .buttons{

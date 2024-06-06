@@ -45,7 +45,6 @@ export const AddFeeDetails = ({handleprogress}) => {
       );
     };
     const handleClickCheckbox = async(index,className) => {
-        // console.log(className);
         if(checkedItems[index]) setSelectedClasses([...selectedClasses,className]);
         setCheckedItems((prevState) => {
           const newCheckedItems = [...prevState];
@@ -53,7 +52,6 @@ export const AddFeeDetails = ({handleprogress}) => {
           return newCheckedItems;
         });
         await handleClassChange(className);
-        // console.log(selectedClasses);
       };
     return (
       <div className="form-container" >
@@ -75,16 +73,7 @@ export const AddFeeDetails = ({handleprogress}) => {
             />
             
           </div>
-            {/* <label htmlFor="id">Enter Academic Programme <div className="mandatory" style={{color:"rgba(251, 55, 72, 1)"}}>*</div></label> */}
-          {/* <div className="form-group">
-            <input
-              type="text"
-              id="id"
-              value={id}
-              placeholder='James Brown'
-              onChange={(e) => setId(e.target.value)}
-            />
-          </div> */}
+   
             <label>Select Classes <div className="mandatory" style={{color:"rgba(251, 55, 72, 1)"}}>*</div></label>
           <div className="select-classes-container">
             <div className="selected-classes" style={{display:'flex',alignContent:'left',justifyContent:'left'}} onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
@@ -166,13 +155,9 @@ export const AddFeeDetails = ({handleprogress}) => {
         <SlArrowRight  size={9} strokeWidth={70}/>
             </div> 
           </button>
-        </form>
-      
-      {/* <span className={'checkbox checked'}></span> */}
-    
- 
+        </form> 
 </div>
-    //   </div>
+
     );
   
 }
