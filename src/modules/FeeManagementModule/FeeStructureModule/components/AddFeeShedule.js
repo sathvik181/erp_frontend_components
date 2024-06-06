@@ -1,17 +1,11 @@
-import React, {  useState } from 'react'
-import { Feeicon, Feesheduleicon } from './Feeicon';
+import React from 'react'
+import { Feesheduleicon } from './Feeicon';
 import { SlArrowRight ,SlArrowLeft} from "react-icons/sl";
-import {SlArrowDown } from "react-icons/sl";
-// import { BiColor } from 'react-icons/bi';
-import { FaInfoCircle } from 'react-icons/fa';
+import { useStartDate,useApplyDate,useOpenCalendar,useMoreOptionDropdown } from '../hooks';
 import { FaCalendarDay } from "react-icons/fa6";
-import { DatePickers } from './DatePicker';
 import "./AddFeeShedule.css"
-// import { GlobalContext } from './CreateFeeStructure';
 import DatePicker from 'react-datepicker';
-
 import styled from 'styled-components';
-
 import 'react-datepicker/dist/react-datepicker.css';
 const DatePickerWrapper = styled.div`
   position: relative;
@@ -182,41 +176,27 @@ font-weight: 500;
     color: #fff;
   }
 `;
-
 export const AddFeeShedule = ({handleprogress}) => {
   // const {progress,setprogress}= useContext(GlobalContext);
-  const [startDate, setStartDate] = useState(null);
-  const [applydate,setapplydate]=useState(false)
-  const [opencalendar,setopencalendar]=useState(false);
-   const [startDate2, setStartDate2] = useState(null);
-  const [applydate2,setapplydate2]=useState(false)
-  const [opencalendar2,setopencalendar2]=useState(false);
-    const classes = ['Class VI', 'Class VII', 'Class VIII', 'Class IX', 'Class X'];
-    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-    const [checkedItems, setCheckedItems] = useState(new Array(classes.length).fill(false));
-    const [moreoptiondropdown,setmoreoptiondropdown] =useState(false);
-    const handleClickCheckbox = async(index,className) => {
-      // console.log(className);
-      // if(checkedItems[index]) setSelectedClasses([...selectedClasses,className]);
-      setCheckedItems((prevState) => {
-        const newCheckedItems = [...prevState];
-        newCheckedItems[index] = !newCheckedItems[index];
-        return newCheckedItems;
-      });
-      // await handleClassChange(className);
-      // console.log(selectedClasses);
-    };
-    const handlecalendarselect=()=>{
-      setopencalendar(false);
-    }
+  const [startDate, setStartDate] = useStartDate(null);
+  const [applydate, setApplyDate] = useApplyDate();
+  const [opencalendar, setOpenCalendar] = useOpenCalendar();
+  const [startDate2, setStartDate2] = useStartDate();
+  const [applydate2, setApplyDate2] = useApplyDate();
+  const [opencalendar2, setOpenCalendar2] = useOpenCalendar();
+  // const classes = ['Class VI', 'Class VII', 'Class VIII', 'Class IX', 'Class X'];
+
+  const [moreoptiondropdown, setMoreOptionDropdown] = useMoreOptionDropdown();
+  
+  
     const handlecalendar=(value)=>{
-      if(value==1)
-      setopencalendar(true);
-    else setopencalendar2(true);
+      if(value===1)
+      setOpenCalendar(true);
+    else setOpenCalendar2(true);
       console.log("ssfdfdf");
     }
     const handlemoreoption =()=>{
-     setmoreoptiondropdown(!moreoptiondropdown);
+     setMoreOptionDropdown(!moreoptiondropdown);
     }
       return (
           <div className="container" >
@@ -270,8 +250,8 @@ export const AddFeeShedule = ({handleprogress}) => {
         
       />
       <div className="button-group">
-        <button className="cancel-button"  onClick={() => {setopencalendar(false);console.log(opencalendar)}}>Cancel</button>  
-        <button className="apply-button" onClick={() => {setopencalendar(false);setapplydate(true)}}>Apply</button>
+        <button className="cancel-button"  onClick={() => {setOpenCalendar(false);console.log(opencalendar)}}>Cancel</button>  
+        <button className="apply-button" onClick={() => {setOpenCalendar(false);setApplyDate(true)}}>Apply</button>
       </div>  
     </DatePickerWrapper>  }
         {!applydate && <FaCalendarDay style={{cursor:'pointer'}} onClick={() => {handlecalendar(1)}}/>}
@@ -308,8 +288,8 @@ export const AddFeeShedule = ({handleprogress}) => {
         
       />
       <div className="button-group">
-        <button className="cancel-button"  onClick={() => {setopencalendar2(false);console.log(opencalendar2)}}>Cancel</button>  
-        <button className="apply-button" onClick={() => {setopencalendar2(false);setapplydate2(true)}}>Apply</button>
+        <button className="cancel-button"  onClick={() => {setOpenCalendar2(false);console.log(opencalendar2)}}>Cancel</button>  
+        <button className="apply-button" onClick={() => {setOpenCalendar2(false);setApplyDate2(true)}}>Apply</button>
       </div>  
     </DatePickerWrapper>  }
         {!applydate2 && <FaCalendarDay style={{cursor:'pointer'}} onClick={() => {handlecalendar(2)}}/>}

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import '../DetailsCard/DetailsCard.css'
+import './DetailsCard.css'
 import { CiSearch } from "react-icons/ci";
 import { TbSortDescending } from "react-icons/tb";
 import { BsFilter } from "react-icons/bs";

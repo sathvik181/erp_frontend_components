@@ -1,30 +1,32 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef} from 'react'
 import { Feeicon } from './Feeicon';
 import { SlArrowRight ,SlArrowLeft} from "react-icons/sl";
 import {SlArrowDown } from "react-icons/sl";
 import { FaInfoCircle } from 'react-icons/fa';
 import "./AddFeeStructure.css";
-// import { CiCirclePlus } from "react-icons/ci";
+import {useFilled,usePopup,useClasses,useDropdown,useCheckedItems,useConcessionBox,useMoreInfo,useNewFeeType} from '../hooks'
 import { HiOutlinePlusSmall } from "react-icons/hi2";
 
-// import { GlobalContext } from './CreateFeeStructure';
 export const AddFeeStructure = ({handleprogress}) => {
-  // setprogress(progress+1);
-  const [filled,setfilled]=useState(0);
-  // const {progress,setprogress}= useContext(GlobalContext);
-  const [isPopupOpen, setIsPopupOpen] = useState(false);
-  const [classes,setclasses] = useState(['Tution fee', 'Fee 2', 'Fee 3', 'Fee 5', 'Fee 6']);
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [checkedItems, setCheckedItems] = useState(new Array(classes.length).fill(false));
-  // const [moreoptiondropdown,setmoreoptiondropdown] =useState(false);
-  const [concessionbox,setconcessionbox]=useState(false);
-  const [moreinfo,setmoreinfo] =useState(new Array(classes.length+1).fill(false));
-  const [newfeetype, setnewfeetype] = useState('');
+  const [filled, setFilled] = useFilled();
+
+  const [isPopupOpen, setIsPopupOpen] = usePopup();
+  const [classes, setClasses] = useClasses(); 
+  const [isDropdownOpen, setIsDropdownOpen] = useDropdown();
+  const [checkedItems, setCheckedItems] = useCheckedItems(classes);
+  // const [moreOptionDropdown, setMoreOptionDropdown] = useState(false);
+  const [concessionBox, setConcessionBox] = useConcessionBox();
+  const [moreInfo, setMoreInfo] = useMoreInfo(classes);
+  const [newFeeType, setNewFeeType] = useNewFeeType();
+
   const dropdownRef = useRef(null);
   useEffect(() => {
-    const handleClickOutside = (event) => {
+    const handleClickOutside = async(event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
         setIsDropdownOpen(false);
+        console.log(checkedItems);
+        // await setdontdisplay([...checkedItems]);
+        //  console.log(dontdisplay);
       }
     };
 
@@ -34,44 +36,47 @@ export const AddFeeStructure = ({handleprogress}) => {
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, []);
+  });
   const handlePopup = (value) => {
    console.log(value);
    if(value==="save"){
-    setclasses([...classes,newfeetype]);
+    setClasses([...classes,newFeeType]);
     console.log(classes);
-    // setclasses((prevState) => {
-    //   const newclasses = [...prevState,newfeetype];
+    // setClasses((prevState) => {
+    //   const newclasses = [...prevState,newFeeType];
     //   newCheckedItems[index] = !newCheckedItems[index];
     //   return newCheckedItems;
     // });
    }
      setIsPopupOpen(!isPopupOpen);
    }
-  const handleconcessionbox=()=>{
-    setconcessionbox(!concessionbox)
+  const handleconcessionBox=()=>{
+    setConcessionBox(!concessionBox)
   }
   const handleClickCheckbox = async(index,className) => {
     // console.log(className);
     // if(checkedItems[index]) setSelectedClasses([...selectedClasses,className]);
-    if(checkedItems[index]==false) await setfilled(filled+1);
-    else await setfilled(filled-1);
-    setCheckedItems((prevState) => {
+    if(checkedItems[index]===false) await setFilled(filled+1);
+    else await setFilled(filled-1);
+    await setCheckedItems((prevState) => {
       const newCheckedItems = [...prevState];
       newCheckedItems[index] = !newCheckedItems[index];
       return newCheckedItems;
     });
-    console.log(filled);
+    console.log(checkedItems);
+    console.log('checkedsss');
+   
+    // console.log(filled);
     // await handleClassChange(className);
     // console.log(selectedClasses);
   };
   const handlemoreoption =(index)=>{
-    setmoreinfo((prevState) => {
-      const newmoreinfo = [...prevState];
-      newmoreinfo[index] = !newmoreinfo[index];
-      return newmoreinfo;
+    setMoreInfo((prevState) => {
+      const newmoreInfo = [...prevState];
+      newmoreInfo[index] = !newmoreInfo[index];
+      return newmoreInfo;
     });
-    // setmoreinfo(!moreoptiondropdown);
+    // setMoreInfo(!moreoptiondropdown);
   }
     return (
         <div className="container" >
@@ -101,8 +106,8 @@ export const AddFeeStructure = ({handleprogress}) => {
         <div className="grid-item">Tax <span className="optional">(optional)</span></div>
         <div className="grid-item">More options</div>
       </div>
-      {classes.map((className, index) => (  checkedItems[index] &&
-      <div className="tablebody" style={{ background: moreinfo[index]? 'rgba(253, 253, 253, 1)':''}}>
+      {classes.map((className, index) => ( checkedItems[index] &&
+      <div className="tablebody" style={{ background: moreInfo[index]? 'rgba(253, 253, 253, 1)':''}}>
 
       <div className="grid">
         <div className="grid-item">
@@ -125,15 +130,15 @@ export const AddFeeStructure = ({handleprogress}) => {
         </div>
         <div className="grid-item"   >
 
-         { !moreinfo[index] &&  <span className="dropdown-icon1" ><SlArrowDown size={10} strokeWidth={80} onClick={() =>handlemoreoption(index)} /></span>}
-         {moreinfo[index] && <SlArrowRight  size={9} strokeWidth={70} onClick={() =>handlemoreoption(index)}/>}
+         { !moreInfo[index] &&  <span className="dropdown-icon1" ><SlArrowDown size={10} strokeWidth={80} onClick={() =>handlemoreoption(index)} /></span>}
+         {moreInfo[index] && <SlArrowRight  size={9} strokeWidth={70} onClick={() =>handlemoreoption(index)}/>}
          <svg  style={{marginLeft:'25px',cursor:'pointer'}}  onClick={()=>handleClickCheckbox(index)} width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" >
 <path d="M9.99956 8.93955L13.7121 5.22705L14.7726 6.28755L11.0601 10.0001L14.7726 13.7126L13.7121 14.7731L9.99956 11.0606L6.28706 14.7731L5.22656 13.7126L8.93906 10.0001L5.22656 6.28755L6.28706 5.22705L9.99956 8.93955Z" fill="#FB3748"/>
 </svg>
 
         </div>
       </div>
-      { moreinfo[index] && <div className='GSTrow' style={{width:'882px'}} >
+      { moreInfo[index] && <div className='GSTrow' style={{width:'882px'}} >
      
      <div className="gstcol">
      <div className="toggletext">
@@ -166,7 +171,7 @@ export const AddFeeStructure = ({handleprogress}) => {
     
     
     ))}
-    <div className="grid" style={{ background: moreinfo[classes.length+1] ? 'rgba(253, 253, 253, 1)':''}}>
+    <div className="grid" style={{ background: moreInfo[classes.length+1] ? 'rgba(253, 253, 253, 1)':''}}>
         <div className="grid-item" >
         <div className="select-classes-container">
             <div className="selected-classes1"  onClick={() => setIsDropdownOpen(!isDropdownOpen)}>
@@ -178,7 +183,7 @@ export const AddFeeStructure = ({handleprogress}) => {
             </div>
             {isDropdownOpen && (
               <div className="dropdown-menu" ref={dropdownRef} style={{width:'300px',height:'296px',marginTop:'-20px'}}>
-                {classes.map((className, index) => (
+                {classes.map((className, index) => (  
                     <div className="">
                    
                   <div key={index} className="dropdown-item">
@@ -221,11 +226,11 @@ export const AddFeeStructure = ({handleprogress}) => {
         // onClick={() =>handlemoreoption(index)}
         >
 
-         { !moreinfo[classes.length+1] &&  <span className="dropdown-icon1" onClick={() =>handlemoreoption(classes.length+1)} ><SlArrowDown size={10} strokeWidth={80}/></span>}
-         {moreinfo[classes.length+1] && <SlArrowRight  size={9} strokeWidth={70} onClick={() =>handlemoreoption(classes.length+1)}/>}
+         { !moreInfo[classes.length+1] &&  <span className="dropdown-icon1" onClick={() =>handlemoreoption(classes.length+1)} ><SlArrowDown size={10} strokeWidth={80}/></span>}
+         {moreInfo[classes.length+1] && <SlArrowRight  size={9} strokeWidth={70} onClick={() =>handlemoreoption(classes.length+1)}/>}
         </div>
       </div>
-      {moreinfo[classes.length+1] && <div className='GSTrow' style={{width:'882px'}} >
+      {moreInfo[classes.length+1] && <div className='GSTrow' style={{width:'882px'}} >
      
      <div className="gstcol" >
      <div className="toggletext">
@@ -263,7 +268,7 @@ export const AddFeeStructure = ({handleprogress}) => {
       <div className="concession">
 
       <label className="toggle-switch" >
-        <input type="checkbox" onClick={handleconcessionbox}/>
+        <input type="checkbox" onClick={handleconcessionBox}/>
         <span className="slider"></span>
       </label>
       <span className="label1">
@@ -271,12 +276,12 @@ export const AddFeeStructure = ({handleprogress}) => {
         <FaInfoCircle  size={15} className="info-icon" />
       </span>
       </div>
-      {concessionbox && <div className="concession-input">
+      {concessionBox && <div className="concession-input">
           <input type="text" placeholder="Ex. 8%" />
         </div>}
       <div className="footer" >
 
-      <div className="add-category-button" onClick={()=>handlePopup("open")}>
+      <div className="add-category-button" >
       <span className="icon">+</span>
       <span>
       Add a Category
@@ -317,7 +322,7 @@ export const AddFeeStructure = ({handleprogress}) => {
           <label>
             Enter Name of New Fee type <span>*</span>
           </label>
-            <input type="text" placeholder="Ex. Maintenance Fee" onChange={e => setnewfeetype(e.target.value)}/>
+            <input type="text" placeholder="Ex. Maintenance Fee" onChange={e => setNewFeeType(e.target.value)}/>
         </div>
         <div className="popup-footer">
           <button className="cancel-button" onClick={()=>handlePopup("cancel")}>Cancel</button>

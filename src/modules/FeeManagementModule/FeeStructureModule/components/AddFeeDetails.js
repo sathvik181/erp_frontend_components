@@ -1,40 +1,21 @@
-import React, { useContext, useEffect, useRef, useState } from 'react'
+import React, {  useEffect, useRef, useState } from 'react'
 import { Profileicon } from './Profileicon';
 import "./AddFeeStructure.css";
-// import { RiArrowDropDownLine } from "react-icons/ri";
 import { SlArrowRight } from "react-icons/sl";
 import {SlArrowDown } from "react-icons/sl";
-import { CiSquareMinus } from "react-icons/ci";
-import { FaCheck, FaChevronRight } from 'react-icons/fa';
-// import { GlobalContext } from './CreateFeeStructure';
-
+import { useName,useSelectedClasses,useDropdown ,useOption,useSubclasses} from '../hooks';
 export const AddFeeDetails = ({handleprogress}) => {
-  // const {progress,setprogress}= useContext(GlobalContext);
-  // setprogress(progress+1);
-    const [name, setName] = useState('');
-    const [id, setId] = useState('');
-    const [selectedClasses, setSelectedClasses] = useState(['Class VI', 'Class VII']);
-    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-    const [isDropdownOpen2, setIsDropdownOpen2] = useState(false);
-    const [checked, setChecked] = useState(false);
-    const classes = ['Class VI', 'Class VII', 'Class VIII', 'Class IX', 'Class X'];
-    const sections =['IV-A','IV-B','IV-C','IV-D'];
-    const [option,setoption]=useState("Select an option");
-    const [subclasses, setSubclasses] = useState({
-      VI: {
-        A: true,
-        B: true,
-        C: true,
-      },
-      VII: {
-        A: false,
-        B: false,
-        C: false,
-      },
-    });
-    const terms = ['1 Terms','2 Terms','3 Terms','4 Terms'];
-    const [checkedItems, setCheckedItems] = useState(new Array(classes.length).fill(false));
-    const dropdownRef = useRef(null);
+  const [name, setName] = useName();
+  const [selectedClasses, setSelectedClasses] = useSelectedClasses();
+  const [isDropdownOpen, setIsDropdownOpen] = useDropdown();
+  const [isDropdownOpen2, setIsDropdownOpen2] = useDropdown();
+  const [option, setOption] = useOption();
+  const classes = ['Class VI', 'Class VII', 'Class VIII', 'Class IX', 'Class X'];
+  // eslint-disable-next-line 
+  const [subclasses, setSubclasses] = useSubclasses();
+  const terms = ['1 Terms','2 Terms','3 Terms','4 Terms'];
+  const [checkedItems, setCheckedItems] = useState(new Array(classes.length).fill(false));
+  const dropdownRef = useRef(null);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -51,9 +32,9 @@ export const AddFeeDetails = ({handleprogress}) => {
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, []);
+  });
     const handleoptionselect=(termName)=>{
-     setoption(termName);
+     setOption(termName);
      setIsDropdownOpen2(!isDropdownOpen2);
     }
     const handleClassChange = async(className) => {

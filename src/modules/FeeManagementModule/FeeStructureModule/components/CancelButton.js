@@ -1,6 +1,6 @@
 import React from 'react'
 import "./CancelButton.css"
-import DangerImage from "./danger.png"
+import DangerImage from "../../../../assets/danger.png"
 export const CancelButton = ({ isOpen, onClose, onConfirm }) => {
     if (!isOpen) return null;
 
@@ -10,7 +10,7 @@ export const CancelButton = ({ isOpen, onClose, onConfirm }) => {
           {/* <button className="close-button" onClick={onClose}>Cancel ✕</button> */}
           <div className="modal-content">
             <div className="modal-icon">
-            <img className='DangeImage' src={DangerImage} alt="Description of the image" style={{width:'40px',height:'40px'}} />
+            <img className='DangeImage' src={DangerImage} alt='DangeImage' style={{width:'40px',height:'40px'}} />
               {/* <span>⚠️</span> */}
             </div>
             <div className='boxheadertext'>
